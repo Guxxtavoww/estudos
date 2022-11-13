@@ -1,3 +1,7 @@
-const str: string = 'Olá, Mundo!';
+interface ITest {
+  [key: string]: Array<any>;
+}
 
-console.log(str);
+const test: ITest = {
+  test: [],
+};
