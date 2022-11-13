@@ -1,13 +1,13 @@
-N = 10
-Sum = 0
+number = 10
+sum = 0
   
-# This loop will run forever
+# Loop Eterno
 while True:
-    Sum += N
-    N -= 1
+    sum += number
+    number -= 1
       
-    # the below condition will tell the loop to stop
-    if N == 0:
+    # condição que para o loop
+    if number == 0:
         break
           
-print(f"Sum of First 10 Numbers is {Sum}")
+print(f"A soma dos 10 primeiros números é: {sum}")
