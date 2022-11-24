@@ -1,6 +1,6 @@
 import requests
 
-url = "https://api.dev.pdahub.com.br/api/Common/TipoEstruturaEndereco?codigoCliente=11"
+url = "api_url"
 
 headers = {
 	'Authorization': 'Bearer TOKEN',
