@@ -1,9 +1,8 @@
 import requests
 
-url = "api_url"
+url = "https://www.thunderclient.com/welcome"
 
 headers = {
-	'Authorization': 'Bearer TOKEN',
     'content-type': 'application/json'
 }
 
