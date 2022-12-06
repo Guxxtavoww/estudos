@@ -22,13 +22,13 @@ export class UsersService {
     return users;
   }
 
-  getOne(id: string | number) {
+  getOne(id: string) {
     const user = this.userModel.findById(id);
 
     return user;
   }
 
-  updateOne(id: string | number, updateUserDto: UpdateUserDto) {
+  updateOne(id: string, updateUserDto: UpdateUserDto) {
     const updatedUser = this.userModel.findByIdAndUpdate(
       {
         _id: id,
@@ -44,7 +44,7 @@ export class UsersService {
     return updatedUser;
   }
 
-  deleteOne(id: string | number) {
+  deleteOne(id: string) {
     return this.userModel.deleteOne({ _id: id }).exec();
   }
 }
