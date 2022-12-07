@@ -10,6 +10,24 @@ export class BookService extends PrismaClient {
     super();
   }
 
+  async getBooks() {
+    const books = await this.prisma.book.findMany();
+
+    return books;
+  }
+
+  async getBook(id: string) {
+    const book = await this.prisma.book.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    if (!book) throw new Error('Livro inexistente');
+
+    return book;
+  }
+
   async createBook(bookData: IBookDto) {
     const bookExists = await this.prisma.book.findFirst({
       where: {
@@ -17,12 +35,43 @@ export class BookService extends PrismaClient {
       },
     });
 
-    if (bookExists) throw new Error('Livro já existe');
+    if (bookExists) {
+      throw new Error('Livro já existe');
+    }
 
     const newBook = await this.prisma.book.create({
       data: bookData,
     });
 
     return newBook;
+  }
+
+  async updateBook(id: string, bookData: IBookDto) {
+    const currentBook = await this.prisma.book.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    if (!currentBook) throw new Error('Livro inexistente');
+
+    const updatedBook = await this.prisma.book.update({
+      data: bookData,
+      where: {
+        id,
+      },
+    });
+
+    return updatedBook;
+  }
+
+  async deleteBook(id: string) {
+    const deletedBook = await this.prisma.book.delete({
+      where: {
+        id,
+      },
+    });
+
+    return deletedBook;
   }
 }
