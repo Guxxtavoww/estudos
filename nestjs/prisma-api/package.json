@@ -23,7 +23,9 @@
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
+    "@prisma/client": "^4.7.1",
     "prisma": "^4.7.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
