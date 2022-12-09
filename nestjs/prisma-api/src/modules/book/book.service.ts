@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 
-import { IBookDto } from './book.dto';
+import { BookDto } from './book.dto';
 import { PrismaService } from 'src/config/PrismaService';
 
 @Injectable()
@@ -28,7 +28,7 @@ export class BookService extends PrismaClient {
     return book;
   }
 
-  async createBook(bookData: IBookDto) {
+  async createBook(bookData: BookDto) {
     const bookExists = await this.prisma.book.findFirst({
       where: {
         bar_code: bookData.bar_code,
@@ -46,7 +46,7 @@ export class BookService extends PrismaClient {
     return newBook;
   }
 
-  async updateBook(id: string, bookData: IBookDto) {
+  async updateBook(id: string, bookData: BookDto) {
     const currentBook = await this.prisma.book.findUnique({
       where: {
         id,
