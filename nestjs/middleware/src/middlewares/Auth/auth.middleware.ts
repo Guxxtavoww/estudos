@@ -4,9 +4,14 @@ import { Request, Response, NextFunction } from 'express';
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
-    console.log('Caiu no middleware');
+    const { headers } = req;
 
-    console.log({ req, res });
+    if (!headers.authorization)
+      return res.status(401).json({
+        message: 'Você deve estar autorizado para fazer essa requisição',
+      });
+
+    console.log(headers.authorization);
 
     next();
   }
