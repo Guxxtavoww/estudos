@@ -8,4 +8,4 @@ class Person {
   }
 }
 
-new Person('teste').getName();
+new Person("teste").getName();
