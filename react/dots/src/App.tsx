@@ -10,7 +10,7 @@ interface IDot {
 
 const App: React.FC = () => {
   const [dots, setDots] = useState<IDot[]>([]);
-  const [previousDot, setPreviousDot] = useState<IDot | undefined>({} as IDot);
+  const [previousDot, setPreviousDot] = useState<IDot | undefined>(undefined);
 
   const handleAddDot = useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -42,7 +42,7 @@ const App: React.FC = () => {
   const handleRedoDot = useCallback(() => {
     if (!previousDot) return;
 
-    setDots(prevState => [...prevState, previousDot]);
+    setDots((prevState) => [...prevState, previousDot]);
   }, [previousDot]);
 
   return (
@@ -53,8 +53,12 @@ const App: React.FC = () => {
             dots.map((dot, index) => <Dot {...dot} key={index} />)}
         </div>
         <div className="controls_container">
-          <button onClick={handleUndoDot}>Desfazer</button>
-          <button onClick={handleRedoDot}>Refazer</button>
+          {previousDot && (
+            <>
+              <button onClick={handleUndoDot}>Desfazer</button>
+              <button onClick={handleRedoDot}>Refazer</button>
+            </>
+          )}
         </div>
       </div>
       <GlobalStyles />
