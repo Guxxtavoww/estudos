@@ -25,7 +25,7 @@ const App: React.FC = () => {
 
         if (hasDotOnSameLocation) return prevState;
 
-        const newDot = { xLocation, yLocation };
+        const newDot: IDot = { xLocation, yLocation };
 
         setPreviousDot(newDot);
 
