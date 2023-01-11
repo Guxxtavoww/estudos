@@ -16,8 +16,6 @@ const App: React.FC = () => {
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       const { clientX: xLocation, clientY: yLocation } = event;
 
-      setPreviousDot({} as IDot);
-
       const newDot: IDot = { xLocation, yLocation };
 
       setPreviousDot(newDot);
