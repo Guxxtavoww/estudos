@@ -40,7 +40,7 @@ const App: React.FC = () => {
 
     setDots(dots.filter((dot) => dot !== previousDot));
 
-    setPreviousDot(dots[dots.length]);
+    setPreviousDot(dots[dots.length - 1]);
   }, [dots, previousDot]);
 
   const handleRedoDot = useCallback(() => {
@@ -48,7 +48,7 @@ const App: React.FC = () => {
 
     setDots((prevState) => [...prevState, previousDot]);
 
-    setPreviousDot(dots[dots.length]);
+    setPreviousDot(dots[dots.length - 1]);
   }, [previousDot]);
 
   return (
