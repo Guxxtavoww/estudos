@@ -39,12 +39,16 @@ const App: React.FC = () => {
     if (!previousDot) return;
 
     setDots(dots.filter((dot) => dot !== previousDot));
+
+    setPreviousDot(dots[dots.length]);
   }, [dots, previousDot]);
 
   const handleRedoDot = useCallback(() => {
     if (!previousDot) return;
 
     setDots((prevState) => [...prevState, previousDot]);
+
+    setPreviousDot(dots[dots.length]);
   }, [previousDot]);
 
   return (
