@@ -47,7 +47,7 @@ const App: React.FC = () => {
     setDots((prevState) => [...prevState, previousDot]);
 
     setPreviousDot(dots[dots.length - 1]);
-  }, [previousDot]);
+  }, [dots, previousDot]);
 
   return (
     <>
