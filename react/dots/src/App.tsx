@@ -10,7 +10,7 @@ interface IDot {
 
 const App: React.FC = () => {
   const [dots, setDots] = useState<IDot[]>([]);
-  const [previousDot, setPreviousDot] = useState<IDot | undefined>(undefined);
+  const [previousDot, setPreviousDot] = useState<IDot>({} as IDot);
 
   const handleAddDot = useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -34,16 +34,12 @@ const App: React.FC = () => {
   );
 
   const handleUndoDot = useCallback(() => {
-    if (!previousDot) return;
-
     setDots(dots.filter((dot) => dot !== previousDot));
 
     setPreviousDot(dots[dots.length - 1]);
   }, [dots, previousDot]);
 
   const handleRedoDot = useCallback(() => {
-    if (!previousDot) return;
-
     setDots((prevState) => [...prevState, previousDot]);
 
     setPreviousDot(dots[dots.length - 1]);
