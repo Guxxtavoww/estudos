@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     cursor: pointer;
     &::before {
-        content: 'Clique em qualquer lugar nessa secao';
+        content: 'Clique em qualquer lugar nessa seção';
         position: absolute;
         top: 50%;
         left: 50%;
