@@ -16,7 +16,9 @@ const App: React.FC = () => {
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       const { clientX: xLocation, clientY: yLocation } = event;
 
-      setPreviousDot(undefined);
+      const newDot: IDot = { xLocation, yLocation };
+
+      setPreviousDot(newDot);
 
       setDots((prevState) => {
         const hasDotOnSameLocation = prevState.find(
@@ -24,10 +26,6 @@ const App: React.FC = () => {
         );
 
         if (hasDotOnSameLocation) return prevState;
-
-        const newDot: IDot = { xLocation, yLocation };
-
-        setPreviousDot(newDot);
 
         return [...prevState, newDot];
       });
@@ -49,16 +47,17 @@ const App: React.FC = () => {
     <>
       <div className="app_wrapper">
         <div className="dots_container" onClick={handleAddDot}>
-          {dots.length &&
-            dots.map((dot, index) => <Dot {...dot} key={index} />)}
+          {dots.length
+            ? dots.map((dot, index) => <Dot {...dot} key={index} />)
+            : null}
         </div>
         <div className="controls_container">
-          {previousDot && (
+          {previousDot ? (
             <>
               <button onClick={handleUndoDot}>Desfazer</button>
               <button onClick={handleRedoDot}>Refazer</button>
             </>
-          )}
+          ) : null}
         </div>
       </div>
       <GlobalStyles />
