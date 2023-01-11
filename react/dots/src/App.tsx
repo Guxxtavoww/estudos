@@ -34,6 +34,8 @@ const App: React.FC = () => {
   );
 
   const handleUndoDot = useCallback(() => {
+    if (!previousDot) return;
+
     setDots(dots.filter((dot) => dot !== previousDot));
   }, [dots, previousDot]);
 
