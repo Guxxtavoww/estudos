@@ -60,7 +60,7 @@ const App: React.FC = () => {
             : null}
         </div>
         <div className="controls_container">
-          {previousDot ? (
+          {dots.length ? (
             <>
               <button onClick={handleUndoDot}>Desfazer</button>
               <button onClick={handleRedoDot}>Refazer</button>
