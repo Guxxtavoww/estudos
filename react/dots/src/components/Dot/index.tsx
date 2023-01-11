@@ -7,8 +7,6 @@ interface IDotProps {
   yLocation: number;
 }
 
-const Dot: React.FC<IDotProps> = ({ xLocation, yLocation }) => (
-  <DotContainer xLocation={xLocation} yLocation={yLocation} />
-);
+const Dot: React.FC<IDotProps> = (props) => <DotContainer {...props} />;
 
 export default Dot;
