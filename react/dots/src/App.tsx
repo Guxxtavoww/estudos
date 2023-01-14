@@ -22,7 +22,9 @@ const App: React.FC = () => {
 
       setDots((prevState) => {
         const hasDotOnSameLocation = prevState.find(
-          (dot) => dot.xLocation === xLocation && dot.yLocation === yLocation
+          (dot) =>
+            dot.xLocation === newDot.xLocation &&
+            dot.yLocation === newDot.yLocation
         );
 
         if (hasDotOnSameLocation) return prevState;
