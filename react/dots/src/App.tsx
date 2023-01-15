@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 import Dot from "./components/Dot";
 import GlobalStyles from "./styles/global";
