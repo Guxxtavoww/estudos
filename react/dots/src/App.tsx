@@ -12,6 +12,8 @@ const App: React.FC = () => {
   const [dots, setDots] = useState<IDot[]>([]);
   const [previousDot, setPreviousDot] = useState<IDot>({} as IDot);
 
+  const lastDot = dots[dots.length - 1];
+
   const handleAddDot = useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       const { clientX: xLocation, clientY: yLocation } = event;
@@ -38,14 +40,14 @@ const App: React.FC = () => {
   const handleUndoDot = useCallback(() => {
     setDots(prevState => prevState.filter((dot) => dot !== previousDot));
 
-    setPreviousDot(dots[dots.length - 1]);
-  }, [dots, previousDot]);
+    setPreviousDot(lastDot);
+  }, [lastDot, previousDot]);
 
   const handleRedoDot = useCallback(() => {
     setDots((prevState) => [...prevState, previousDot]);
 
-    setPreviousDot(dots[dots.length - 1]);
-  }, [dots, previousDot]);
+    setPreviousDot(lastDot);
+  }, [lastDot, previousDot]);
 
   return (
     <>
