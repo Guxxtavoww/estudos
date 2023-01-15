@@ -1,6 +1,7 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 
 const App: React.FC = () => {
+  const renderCountRef = useRef<number>(0);
   const loginInputRef = useRef<HTMLInputElement>(null);
 
   const handleFormSubmit = useCallback(
@@ -12,9 +13,14 @@ const App: React.FC = () => {
     []
   );
 
+  useEffect(() => {
+    renderCountRef.current = renderCountRef.current++;
+  });
+
   return (
     <form className="app_wrapper" onSubmit={handleFormSubmit}>
       <input className="s" ref={loginInputRef} />
+      <span>Renderizou {renderCountRef.current} vezes</span>
     </form>
   );
 };
