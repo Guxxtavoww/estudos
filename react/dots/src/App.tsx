@@ -23,11 +23,7 @@ const App: React.FC = () => {
       setPreviousDot(newDot);
 
       setDots((prevState) => {
-        const hasDotOnSameLocation = prevState.find(
-          (dot) =>
-            dot.xLocation === newDot.xLocation &&
-            dot.yLocation === newDot.yLocation
-        );
+        const hasDotOnSameLocation = prevState.find((dot) => dot === newDot);
 
         if (hasDotOnSameLocation) return prevState;
 
@@ -38,7 +34,7 @@ const App: React.FC = () => {
   );
 
   const handleUndoDot = useCallback(() => {
-    setDots(prevState => prevState.filter((dot) => dot !== previousDot));
+    setDots((prevState) => prevState.filter((dot) => dot !== previousDot));
 
     setPreviousDot(lastDot);
   }, [lastDot, previousDot]);
