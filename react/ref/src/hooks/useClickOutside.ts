@@ -9,7 +9,7 @@ export function useClickOutside(currentRef: React.RefObject<HTMLElement>) {
       return;
     }
     setIsClickedOutside(false);
-  }, []);
+  }, [currentRef]);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleDocumentClick);
