@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-export function useClickOutside(currentRef: React.RefObject<HTMLElement>) {
+export function useClickOutside(currentRef: React.RefObject<HTMLElement>): boolean {
   const [isClickedOutside, setIsClickedOutside] = useState(false);
 
   const handleDocumentClick = useCallback((e: MouseEvent) => {
@@ -17,5 +17,5 @@ export function useClickOutside(currentRef: React.RefObject<HTMLElement>) {
     return () => document.removeEventListener("mousedown", handleDocumentClick);
   }, []);
 
-  return { isClickedOutside };
+  return isClickedOutside;
 }

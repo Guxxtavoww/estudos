@@ -7,7 +7,7 @@ const App: React.FC = () => {
   const elRef = useRef<HTMLElement>(null);
   const loginInputRef = useRef<HTMLInputElement>(null);
 
-  const { isClickedOutside } = useClickOutside(elRef);
+  const isClickedOutside = useClickOutside(elRef);
 
   const handleFormSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
