@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-function isFirstRender(): boolean {
+function useIsFirstRender(): boolean {
   const isFirstRenderRef = useRef<boolean>(true);
 
   if (isFirstRenderRef.current) {
@@ -12,4 +12,4 @@ function isFirstRender(): boolean {
   return isFirstRenderRef.current;
 }
 
-export default isFirstRender;
+export default useIsFirstRender;
