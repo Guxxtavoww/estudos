@@ -7,9 +7,11 @@ export function useClickOutside(
 
   const handleDocumentClick = useCallback(
     (e: MouseEvent) => {
-      return setIsClickedOutside(
-        !!currentRef.current?.contains(e.target as Node)
+      const isBeingClicked: boolean | undefined = currentRef.current?.contains(
+        e.target as Node
       );
+
+      return setIsClickedOutside(!!isBeingClicked);
     },
     [currentRef]
   );
