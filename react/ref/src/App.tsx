@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from "react";
 
-import { useClickOutside } from "./hooks/useClickOutside";
+import useClickOutside from "./hooks/useClickOutside";
 
 const App: React.FC = () => {
   const renderCountRef = useRef<number>(0);

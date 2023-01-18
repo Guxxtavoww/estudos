@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import Dot from "./components/Dot";
 import GlobalStyles from "./styles/global";
@@ -12,8 +12,6 @@ const App: React.FC = () => {
   const [dots, setDots] = useState<IDot[]>([]);
   const [previousDot, setPreviousDot] = useState<IDot>({} as IDot);
 
-  const lastDot = dots[dots.length - 1];
-
   const handleAddDot = useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       const { clientX: xLocation, clientY: yLocation } = event;
@@ -24,9 +22,7 @@ const App: React.FC = () => {
 
       setDots((prevState) => {
         const hasDotOnSameLocation = prevState.find(
-          (dot) =>
-            dot.xLocation === newDot.xLocation &&
-            dot.yLocation === newDot.yLocation
+          (dot) => dot.xLocation === xLocation && dot.yLocation === yLocation
         );
 
         if (hasDotOnSameLocation) return prevState;
@@ -38,22 +34,16 @@ const App: React.FC = () => {
   );
 
   const handleUndoDot = useCallback(() => {
-    setDots((prevState) =>
-      prevState.filter(
-        (dot) =>
-          dot.xLocation !== previousDot.xLocation &&
-          dot.yLocation !== previousDot.yLocation
-      )
-    );
+    setDots(dots.filter((dot) => dot !== previousDot));
 
-    setPreviousDot(lastDot);
-  }, [lastDot, previousDot]);
+    setPreviousDot(dots[dots.length - 1]);
+  }, [dots, previousDot]);
 
   const handleRedoDot = useCallback(() => {
     setDots((prevState) => [...prevState, previousDot]);
 
-    setPreviousDot(lastDot);
-  }, [lastDot, previousDot]);
+    setPreviousDot(dots[dots.length - 1]);
+  }, [dots, previousDot]);
 
   return (
     <>

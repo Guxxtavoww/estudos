@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 
-export function useClickOutside(
+function useClickOutside(
   currentRef: React.RefObject<HTMLElement>
 ): boolean {
   const [isClickedOutside, setIsClickedOutside] = useState<boolean>(false);
@@ -17,10 +17,12 @@ export function useClickOutside(
   );
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleDocumentClick);
+    document.addEventListener("mousedown", handleDocumentClick);
 
-    return () => document.removeEventListener('mousedown', handleDocumentClick);
+    return () => document.removeEventListener("mousedown", handleDocumentClick);
   }, [handleDocumentClick]);
 
   return isClickedOutside;
 }
+
+export default useClickOutside;
