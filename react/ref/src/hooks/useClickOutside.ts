@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 
 export function useClickOutside(currentRef: React.RefObject<HTMLElement>): boolean {
-  const [isClickedOutside, setIsClickedOutside] = useState(false);
+  const [isClickedOutside, setIsClickedOutside] = useState<boolean>(false);
 
   const handleDocumentClick = useCallback((e: MouseEvent) => {
     if (!currentRef.current?.contains(e.target as Node)) {
