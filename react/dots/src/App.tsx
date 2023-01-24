@@ -34,16 +34,23 @@ const App: React.FC = () => {
   );
 
   const handleUndoDot = useCallback(() => {
-    setDots(dots.filter((dot) => dot !== previousDot));
+    setDots(prevState => {
+      const filteredArr = prevState.filter((dot) => dot !== previousDot);
 
-    setPreviousDot(dots[dots.length - 1]);
-  }, [dots, previousDot]);
+      setPreviousDot(filteredArr[filteredArr.length -1]);
+
+      return filteredArr;
+    });
+  }, [previousDot]);
 
   const handleRedoDot = useCallback(() => {
-    setDots((prevState) => [...prevState, previousDot]);
+    setDots((prevState) => {
+      setPreviousDot(prevState[prevState.length -1]);
+      
+      return [...prevState, previousDot];
+    });
 
-    setPreviousDot(dots[dots.length - 1]);
-  }, [dots, previousDot]);
+  }, [previousDot]);
 
   return (
     <>
