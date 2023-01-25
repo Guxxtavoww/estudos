@@ -45,7 +45,9 @@ const App: React.FC = () => {
 
   const handleRedoDot = useCallback(() => {
     setDots((prevState) => {
-      setPreviousDot(prevState[prevState.length -1]);
+      const prevDot = prevState[prevState.length -1];
+
+      setPreviousDot(prevDot);
       
       return [...prevState, previousDot];
     });
