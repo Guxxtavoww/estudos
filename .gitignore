@@ -3,3 +3,4 @@
 **/dist
 **/test
 yarn.lock
+.vscode
