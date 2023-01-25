@@ -1,5 +1,5 @@
-interface ITest {
-  [key: string]: Array<never>;
+interface ITest<T = any> {
+  [key: string]: Array<T>;
 }
 
 const test: ITest = {
