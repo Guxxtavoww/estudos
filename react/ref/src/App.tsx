@@ -1,6 +1,13 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  lazy,
+  Suspense,
+} from "react";
 
-import Modal from "./components/Modal";
+const Modal = lazy(() => import("./components/Modal"));
 
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,17 +29,21 @@ const App: React.FC = () => {
   });
 
   return (
-    <form className="app_wrapper" onSubmit={handleFormSubmit}>
-      <input className="s" ref={loginInputRef} />
-      <span>Renderizou {renderCountRef.current} vezes</span>
-      <button onClick={() => setIsModalOpen(true)} type="button">Open modal</button>
-      {isModalOpen ? (
-        <Modal
-          handleClose={() => setIsModalOpen(false)}
-          closeWhenClickOutside
-        />
-      ) : null}
-    </form>
+    <Suspense fallback={<h2>Loading...</h2>}>
+      <form className="app_wrapper" onSubmit={handleFormSubmit}>
+        <input className="s" ref={loginInputRef} />
+        <span>Renderizou {renderCountRef.current} vezes</span>
+        <button onClick={() => setIsModalOpen(true)} type="button">
+          Open modal
+        </button>
+        {isModalOpen ? (
+          <Modal
+            handleClose={() => setIsModalOpen(false)}
+            closeWhenClickOutside
+          />
+        ) : null}
+      </form>
+    </Suspense>
   );
 };
 
