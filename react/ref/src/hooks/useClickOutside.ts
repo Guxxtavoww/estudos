@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
+
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 function useClickOutside(
   currentRef: React.RefObject<HTMLElement>
@@ -16,7 +18,7 @@ function useClickOutside(
     [currentRef]
   );
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     document.addEventListener("mousedown", handleDocumentClick);
 
     return () => document.removeEventListener("mousedown", handleDocumentClick);
