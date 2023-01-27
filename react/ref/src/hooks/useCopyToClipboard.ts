@@ -27,9 +27,10 @@ function useCopyToClipboard(): IHookResponse {
       return false;
     }
   };
+
   return { copiedText, handleCopy };
 }
 
 export default useCopyToClipboard;
 
-// Usage -> <button onClick={() => copy('Texto')}>Tantofaz</button> && <p>{copiedText ?? 'Não copio nada!'}</p>
+// Usage -> <button onClick={() => handleCopy('Texto')}>Tantofaz</button> && <p>{copiedText ?? 'Não copio nada!'}</p>
