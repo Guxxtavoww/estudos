@@ -3,7 +3,12 @@ import { useState } from "react";
 type CopiedValue = string | null;
 type CopyFunction = (text: string) => Promise<boolean>;
 
-function useCopyToClipboard(): [CopiedValue, CopyFunction] {
+interface IHookResponse {
+  copiedText: CopiedValue;
+  handleCopy: CopyFunction;
+}
+
+function useCopyToClipboard(): IHookResponse {
   const [copiedText, setCopiedText] = useState<CopiedValue>(null);
 
   const handleCopy: CopyFunction = async (text) => {
@@ -22,7 +27,7 @@ function useCopyToClipboard(): [CopiedValue, CopyFunction] {
       return false;
     }
   };
-  return [copiedText, handleCopy];
+  return { copiedText, handleCopy };
 }
 
 export default useCopyToClipboard;
