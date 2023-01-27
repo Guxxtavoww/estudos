@@ -24,7 +24,7 @@ const Modal: React.FC<IModalProps> = ({
   return (
     <div className="modalWrapper">
       <div className="modal" ref={modalRef}>
-        <span>me mama</span>
+        <span>Modal</span>
       </div>
     </div>
   );

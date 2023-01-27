@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 function useClickOutside(
   currentRef: React.RefObject<HTMLElement>
@@ -7,16 +7,16 @@ function useClickOutside(
 
   const handleDocumentClick = useCallback(
     (e: MouseEvent) => {
-      const isBeingClicked: boolean | undefined = !currentRef.current?.contains(
+      const clickedOutside = !currentRef.current?.contains(
         e.target as Node
       );
 
-      return setIsClickedOutside(!!isBeingClicked);
+      return setIsClickedOutside(clickedOutside);
     },
     [currentRef]
   );
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     document.addEventListener("mousedown", handleDocumentClick);
 
     return () => document.removeEventListener("mousedown", handleDocumentClick);
