@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 type CopiedValue = string | null;
-type CopyFunction = (text: string) => Promise<boolean>;
+type CopyFunction = (text: string) => Promise<void>;
 
 interface IHookResponse {
   copiedText: CopiedValue;
@@ -15,16 +15,14 @@ function useCopyToClipboard(): IHookResponse {
     if (!navigator.clipboard) {
       console.warn("Area de transferencia nao existente");
 
-      return false;
+      return;
     }
 
     try {
       await navigator.clipboard.writeText(text);
-      return true;
     } catch (err) {
       console.log(err);
       setCopiedText(null);
-      return false;
     }
   };
 
