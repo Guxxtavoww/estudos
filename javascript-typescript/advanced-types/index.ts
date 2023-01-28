@@ -9,3 +9,16 @@ type Mutable<T> = {
 }
 
 type MutableUser = Mutable<IUser>;
+
+// const routes = <const T>(routes: Array<T>) => {
+//   const redirect = (from: T, to: T) => {};
+
+//   return { redirect };
+// }
+
+// const router = routes(['/admin', '/login', '/register']);
+
+// router.redirect('')
+
+
+// só no typescript 5.0
