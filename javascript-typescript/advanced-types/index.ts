@@ -6,7 +6,7 @@ interface IUser {
 
 type Mutable<T> = {
   -readonly [K in keyof T]: T[K];
-}
+};
 
 type MutableUser = Mutable<IUser>;
 
@@ -20,5 +20,19 @@ type MutableUser = Mutable<IUser>;
 
 // router.redirect('')
 
-
 // só no typescript 5.0
+
+interface IObj {
+  a: 'Teste1A';
+  a2: 'A2';
+  b: 'R';
+}
+
+type ValuesOfKeysStartingWithA<
+  Obj,
+  _ExtractedKeys extends keyof Obj = Extract<keyof Obj, `a${string}`>
+> = {
+  [K in _ExtractedKeys]: Obj[K];
+}[_ExtractedKeys];
+
+type NewUnion = ValuesOfKeysStartingWithA<IObj>;
