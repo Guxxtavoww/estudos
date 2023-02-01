@@ -8,7 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 
-import { IBookDto } from './book.dto';
+import { BookDto } from './book.dto';
 import { BookService } from './book.service';
 
 @Controller('server/book')
@@ -26,12 +26,12 @@ export class BookController {
   }
 
   @Post()
-  createBook(@Body() bookData: IBookDto) {
+  createBook(@Body() bookData: BookDto) {
     return this.bookService.createBook(bookData);
   }
 
   @Put(':id')
-  updateBook(@Param('id') id: string, @Body() bookData: IBookDto) {
+  updateBook(@Param('id') id: string, @Body() bookData: BookDto) {
     return this.bookService.updateBook(id, bookData);
   }
 

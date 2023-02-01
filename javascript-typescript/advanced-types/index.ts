@@ -28,11 +28,12 @@ interface IObj {
   b: 'R';
 }
 
-type ValuesOfKeysStartingWithA<
+type ValuesOfKeysStartingWithAnyLetter<
+  Letter extends string,
   Obj,
-  _ExtractedKeys extends keyof Obj = Extract<keyof Obj, `a${string}`>
+  _ExtractedKeys extends keyof Obj = Extract<keyof Obj, `${Letter}${string}`>
 > = {
   [K in _ExtractedKeys]: Obj[K];
 }[_ExtractedKeys];
 
-type NewUnion = ValuesOfKeysStartingWithA<IObj>;
+type NewUnion = ValuesOfKeysStartingWithAnyLetter<'a', IObj>;
