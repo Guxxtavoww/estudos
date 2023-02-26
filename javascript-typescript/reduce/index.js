@@ -19,7 +19,7 @@ const totalProductsPrice = productsArray.reduce(
     );
     console.log(`Index atual: ${JSON.stringify(currentProduct)}`);
 
-    return totalContext + currentProduct.price; // a cada index que passa esse retorno vai para o totalContext
+    return totalContext + currentProduct.price; // a cada index que passa, esse retorno vai para o totalContext
   },
   0
 );
