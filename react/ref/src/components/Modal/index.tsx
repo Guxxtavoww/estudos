@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from 'react';
 
-import useClickOutside from "../../hooks/useClickOutside";
+import useClickOutside from '../../hooks/useClickOutside';
 
 interface IModalProps {
   handleClose: () => void;

@@ -10,6 +10,6 @@ def countFunctionRunTime(func):
 
 @countFunctionRunTime
 def test():
-    print('Teste')
+    print('fodasdsajdpoisadh upioaqhdweqaoui hq9aiu hwsauio fhbawoui fbajish bfsa')
 
 test()
