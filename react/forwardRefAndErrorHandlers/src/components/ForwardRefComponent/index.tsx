@@ -1,9 +1,8 @@
-import React, { forwardRef, ForwardedRef, memo } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 interface iForwardRefComponentProps {
   children?: React.ReactNode;
   name: string;
-  ref: ForwardedRef<HTMLInputElement>;
 }
 
 const ForwardRefComponent = forwardRef<

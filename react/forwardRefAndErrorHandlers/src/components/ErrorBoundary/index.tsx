@@ -2,12 +2,17 @@ import React from 'react';
 
 interface iErrorBoundaryProps {
   children: React.ReactNode;
+<<<<<<< HEAD
   fallback?: string | JSX.Element;
   onError?: (
     error?: Error,
     errorInfo?: React.ErrorInfo
   ) => void | Promise<void>;
   logError?: boolean;
+=======
+  fallback: string | JSX.Element;
+  onError?: (cause?: Error) => void | Promise<void>;
+>>>>>>> 8b6809e6273abae6a78eb3775bb0d048333831f9
 }
 
 interface iErrorBoundaryState {
