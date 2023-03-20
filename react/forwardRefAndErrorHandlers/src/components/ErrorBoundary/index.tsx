@@ -24,8 +24,8 @@ class ErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    this.props.onError && this.props.onError(error, errorInfo);
     this.setState({ hasError: true });
+    this.props.onError && this.props.onError(error, errorInfo);
     if (this.props.logError) {
       console.log({ errorBoundaryError: { error, errorInfo } });
     }
