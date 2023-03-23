@@ -4,3 +4,4 @@
 **/test
 yarn.lock
 .vscode
+**/.env
