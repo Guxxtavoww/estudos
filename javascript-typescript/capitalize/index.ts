@@ -1,7 +1,13 @@
 function capitalize(text: string): string {
-  const [f, ...rest] = text;
+  const spitedText = text.split(' ');
 
-  return f.toUpperCase().concat(...rest);
+  const mappedText = spitedText.map((word) => {
+    const [firstLetter, ...rest] = word;
+
+    return firstLetter.toLocaleUpperCase().concat(...rest);
+  });
+
+  return mappedText.join(' ');
 }
 
-console.log(capitalize('sad dAs'));
+console.log(capitalize('sad'));
