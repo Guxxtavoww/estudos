@@ -22,4 +22,8 @@ function handleGetUserLocation() {
   );
 }
 
-handleGetUserLocation();
+try {
+  handleGetUserLocation();
+} catch (error) {
+  console.error(error);
+}
