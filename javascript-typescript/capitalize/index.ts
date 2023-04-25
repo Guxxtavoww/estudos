@@ -1,5 +1,5 @@
 function capitalize(text: string): string {
-  const spitedText = text.split(' ');
+  const spitedText = text.trim().split(' ');
 
   const mappedText = spitedText.map((word) => {
     const [firstLetter, ...rest] = word;
