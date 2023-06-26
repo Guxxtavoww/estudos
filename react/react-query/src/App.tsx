@@ -12,7 +12,7 @@ const getReposRequest = async () => {
 };
 
 const GitRepos: React.FC = () => {
-  const { isLoading, data: res } = useQuery({
+  const { isLoading, data: {data} } = useQuery({
     queryKey: ['repos'],
     queryFn: getReposRequest,
   });
@@ -21,7 +21,7 @@ const GitRepos: React.FC = () => {
 
   return (
     <div style={{ width: '100vw' }}>
-      <pre>{JSON.stringify(res?.data, null, 2)}</pre>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
 };
